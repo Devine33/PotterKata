@@ -1,21 +1,32 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PotterKataLibrary
 {
     public class Basket
     {
-        private readonly List<Book> _books = new();
-
+        public Dictionary<string,List<Book>> Books { get; } = new();
         public void AddBook(Book bookToAdd)
         {
-            _books.Add(bookToAdd);
+            if (Books.ContainsKey(bookToAdd.Name))
+            {
+                Books[bookToAdd.Name].Add(bookToAdd);
+            }
+            else
+            {
+                Books.Add(bookToAdd.Name,new List<Book>(){bookToAdd});
+            }
         }
 
         public void AddBook(List<Book> booksToAdd)
         {
-            _books.AddRange(booksToAdd);
+            foreach (var book in booksToAdd)
+            {
+                AddBook(book);
+            }
         }
 
-        public int TotalNumberOfItems => _books.Count;
+        public int TotalNumberOfItems => Books.Sum(kvp => kvp.Value.Count);
+
     }
 }
