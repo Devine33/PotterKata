@@ -155,11 +155,14 @@ namespace PotterKataLibraryTests
                 {
                     new Book() {Name = "Phil. Stone"},
                     new Book() {Name = "Goblet"},
+                    new Book() {Name = "Goblet"},
+                    new Book() {Name = "Azkhaban"},
                     new Book() {Name = "Azkhaban"},
                     new Book() {Name = "Chamber"},
+                    new Book() {Name = "Chamber"},
+                    new Book() {Name = "Order"},
                     new Book() {Name = "Order"},
                     new Book() {Name = "Halfblood"},
-                    new Book() {Name = "Deathly"},
                 };
             }
         }

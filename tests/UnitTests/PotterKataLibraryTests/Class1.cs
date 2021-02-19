@@ -23,18 +23,18 @@ namespace PotterKataLibraryTests
         }
 
         [Test]
-        public void Checkout_CorrectlyCalculatesBooksNoDiscount()
+        public void Checkout_CorrectlyCalculatesNoDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOfBooks_NoDiscount());
-            var total = _checkout.CalculateTotal();
-            Assert.AreEqual(40m,total);
+            var discount = _checkout.CalculateDiscount();
+            Assert.AreEqual(0m, discount);
         }
 
         [Test]
         public void Checkout_CorrectlyCalculatesFivePercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_FivePercentDiscount());
-            decimal discount = _checkout.CalculateDiscount();
+            var discount = _checkout.CalculateDiscount();
             Assert.AreEqual(0.05m, discount);
         }
 
@@ -42,7 +42,7 @@ namespace PotterKataLibraryTests
         public void Checkout_CorrectlyCalculatesTenPercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_TenPercentDiscount());
-            decimal discount = _checkout.CalculateDiscount();
+            var discount = _checkout.CalculateDiscount();
             Assert.AreEqual(0.10m, discount);
         }
 
@@ -50,7 +50,7 @@ namespace PotterKataLibraryTests
         public void Checkout_CorrectlyCalculatesFifteenPercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_FifteenPercentDiscount());
-            decimal discount = _checkout.CalculateDiscount();
+            var discount = _checkout.CalculateDiscount();
             Assert.AreEqual(0.15m, discount);
         }
 
@@ -58,7 +58,7 @@ namespace PotterKataLibraryTests
         public void Checkout_CorrectlyCalculatesTwentyFivePercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_TwentyFivePercentDiscount());
-            decimal discount = _checkout.CalculateDiscount();
+            var discount = _checkout.CalculateDiscount();
             Assert.AreEqual(0.25m, discount);
         }
 
@@ -66,7 +66,7 @@ namespace PotterKataLibraryTests
         public void Checkout_CorrectlyCalculatesThirtyPercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_ThirtyPercentDiscount());
-            decimal discount = _checkout.CalculateDiscount();
+            var discount = _checkout.CalculateDiscount();
             Assert.AreEqual(0.30m, discount);
         }
 
@@ -74,10 +74,20 @@ namespace PotterKataLibraryTests
         public void Checkout_CorrectlyCalculatesThirtyFivePercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_ThirtyFivePercentDiscount());
-            decimal discount = _checkout.CalculateDiscount();
+            var discount = _checkout.CalculateDiscount();
             Assert.AreEqual(0.35m, discount);
         }
 
+
+        //TOTAL COST TESTS
+
+        [Test]
+        public void Checkout_CorrectlyCalculatesTotalCostWithNoDiscount()
+        {
+            _checkout = new Checkout(TestHelper.BasketFullOfBooks_NoDiscount());
+            var total = _checkout.CompletePurchase();
+            Assert.AreEqual(40m, total);
+        }
 
         [Test]
         public void Checkout_CorrectlyCalculatesTotalCostWithFivePercentDiscount()
@@ -88,7 +98,7 @@ namespace PotterKataLibraryTests
         }
 
         [Test]
-        public void Checkout_CorrectlyCalculatesBooksForTenPercentDiscount()
+        public void Checkout_CorrectlyCalculatesTotalCostWithTenPercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_TenPercentDiscount());
             var total = _checkout.CompletePurchase();
@@ -96,7 +106,7 @@ namespace PotterKataLibraryTests
         }
 
         [Test]
-        public void Checkout_CorrectlyCalculatesBooksForFifteenPercentDiscount()
+        public void Checkout_CorrectlyCalculatesTotalCostWithFifteenPercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_FifteenPercentDiscount());
             var total = _checkout.CompletePurchase();
@@ -104,7 +114,7 @@ namespace PotterKataLibraryTests
         }
 
         [Test]
-        public void Checkout_CorrectlyCalculatesBooksForTwentyFivePercentDiscount()
+        public void Checkout_CorrectlyCalculatesTotalCostWithTwentyFivePercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_TwentyFivePercentDiscount());
             var total = _checkout.CompletePurchase();
@@ -112,7 +122,7 @@ namespace PotterKataLibraryTests
         }
 
         [Test]
-        public void Checkout_CorrectlyCalculatesBooksForThirtyPercentDiscount()
+        public void Checkout_CorrectlyCalculatesTotalCostWithThirtyPercentDiscount()
         {
             _checkout = new Checkout(TestHelper.BasketFullOFBooks_ThirtyPercentDiscount());
             var total = _checkout.CompletePurchase();
