@@ -13,7 +13,6 @@ namespace PotterKataLibrary
             _customerBasket = basket;
         }
 
-
         public decimal CompletePurchase()
         {
             

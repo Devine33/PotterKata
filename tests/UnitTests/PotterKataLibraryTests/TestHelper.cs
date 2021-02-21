@@ -64,7 +64,7 @@ namespace PotterKataLibraryTests
 
         private static List<Book> BooksWithNoDiscount()
         {
-            return new List<Book>()
+            return new()
             {
                 new Book() {Name = "Phil. Stone"},
                 new Book() {Name = "Phil. Stone"},
@@ -79,8 +79,8 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
                 };
             }
         }
@@ -90,9 +90,9 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Azkhaban"},
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Azkhaban"},
                 };
             }
         }
@@ -102,10 +102,10 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Azkhaban"},
-                    new Book() {Name = "Chamber"},
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Azkhaban"},
+                    new() {Name = "Chamber"},
                 };
             }
         }
@@ -115,11 +115,11 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Azkhaban"},
-                    new Book() {Name = "Chamber"},
-                    new Book() {Name = "Order"},
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Azkhaban"},
+                    new() {Name = "Chamber"},
+                    new() {Name = "Order"},
                 };
             }
         }
@@ -129,12 +129,12 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Azkhaban"},
-                    new Book() {Name = "Chamber"},
-                    new Book() {Name = "Order"},
-                    new Book() {Name = "Halfblood"},
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Azkhaban"},
+                    new() {Name = "Chamber"},
+                    new() {Name = "Order"},
+                    new() {Name = "Halfblood"},
                 };
             }
         }
@@ -144,13 +144,13 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Azkhaban"},
-                    new Book() {Name = "Chamber"},
-                    new Book() {Name = "Order"},
-                    new Book() {Name = "Halfblood"},
-                    new Book() {Name = "Deathly"},    
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Azkhaban"},
+                    new() {Name = "Chamber"},
+                    new() {Name = "Order"},
+                    new() {Name = "Halfblood"},
+                    new() {Name = "Deathly"},    
                 };
             }
         }
@@ -160,16 +160,16 @@ namespace PotterKataLibraryTests
             {
                 return new List<Book>()
                 {
-                    new Book() {Name = "Phil. Stone"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Goblet"},
-                    new Book() {Name = "Azkhaban"},
-                    new Book() {Name = "Azkhaban"},
-                    new Book() {Name = "Chamber"},
-                    new Book() {Name = "Chamber"},
-                    new Book() {Name = "Order"},
-                    new Book() {Name = "Order"},
-                    new Book() {Name = "Halfblood"},
+                    new() {Name = "Phil. Stone"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Goblet"},
+                    new() {Name = "Azkhaban"},
+                    new() {Name = "Azkhaban"},
+                    new() {Name = "Chamber"},
+                    new() {Name = "Chamber"},
+                    new() {Name = "Order"},
+                    new() {Name = "Order"},
+                    new() {Name = "Halfblood"},
                 };
             }
         }
