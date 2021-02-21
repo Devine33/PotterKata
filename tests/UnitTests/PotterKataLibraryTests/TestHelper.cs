@@ -8,49 +8,56 @@ namespace PotterKataLibraryTests
         public static Basket BasketFullOfBooks_NoDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithNoDiscount());
+            basket.AddBooks(BooksWithNoDiscount());
             return basket;
         }
 
         public static Basket BasketFullOFBooks_FivePercentDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithFiveDiscount());
+            basket.AddBooks(BooksWithFiveDiscount());
             return basket;
         }
 
         public static Basket BasketFullOFBooks_TenPercentDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithTenDiscount());
+            basket.AddBooks(BooksWithTenDiscount());
             return basket;
         }
 
         public static Basket BasketFullOFBooks_FifteenPercentDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithFifteenDiscount());
+            basket.AddBooks(BooksWithFifteenDiscount());
             return basket;
         }
 
         public static Basket BasketFullOFBooks_TwentyFivePercentDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithTwentyFiveDiscount());
+            basket.AddBooks(BooksWithTwentyFiveDiscount());
             return basket;
         }
 
         public static Basket BasketFullOFBooks_ThirtyPercentDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithThirtyDiscount());
+            basket.AddBooks(BooksWithThirtyDiscount());
             return basket;
         }
 
         public static Basket BasketFullOFBooks_ThirtyFivePercentDiscount()
         {
             var basket = new Basket();
-            basket.AddBook(BooksWithThirtyFiveDiscount());
+            basket.AddBooks(BooksWithThirtyFiveDiscount());
+            return basket;
+        }
+
+        public static Basket BasketFullOfBooks_TestScenario()
+        {
+            var basket = new Basket();
+            basket.AddBooks(BooksTestScenario());
             return basket;
         }
 

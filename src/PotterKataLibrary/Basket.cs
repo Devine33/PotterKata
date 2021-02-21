@@ -5,20 +5,13 @@ namespace PotterKataLibrary
 {
     public class Basket
     {
-        public Dictionary<string,List<Book>> Books { get; } = new();
+        public List<Book> Books { get; } = new();
         public void AddBook(Book bookToAdd)
         {
-            if (Books.ContainsKey(bookToAdd.Name))
-            {
-                Books[bookToAdd.Name].Add(bookToAdd);
-            }
-            else
-            {
-                Books.Add(bookToAdd.Name,new List<Book>(){bookToAdd});
-            }
+           Books.Add(bookToAdd);
         }
 
-        public void AddBook(List<Book> booksToAdd)
+        public void AddBooks(List<Book> booksToAdd)
         {
             foreach (var book in booksToAdd)
             {
@@ -26,7 +19,7 @@ namespace PotterKataLibrary
             }
         }
 
-        public int TotalNumberOfItems => Books.Sum(kvp => kvp.Value.Count);
+        public int TotalNumberOfItems => Books.Count;
 
     }
 }
