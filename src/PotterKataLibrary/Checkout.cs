@@ -6,7 +6,7 @@ namespace PotterKataLibrary
     public class Checkout
     {
         private readonly Basket _customerBasket;
-        private List<List<string>> _discountGroups = new();
+        private List<List<string>> _uniqueBookGroup = new();
 
         public Checkout(Basket basket)
         {
@@ -15,11 +15,8 @@ namespace PotterKataLibrary
 
         public decimal CompletePurchase()
         {
-            
-            var standardDiscount = CalculateStandardTotal();
-            var groupDiscount = CalculateGroupTotal();
-
-           return  groupDiscount > standardDiscount ? groupDiscount : standardDiscount;
+            var total = Calculate();
+            return total; 
         }
 
         public decimal CalculateTotal(int totalBooks,decimal discount)
@@ -28,25 +25,6 @@ namespace PotterKataLibrary
             var totalDiscount = total * discount;
             var finalPurchaseCost = total - totalDiscount;
             return finalPurchaseCost;
-        }
-
-        //Basic discount is based on total number of unique books purchased
-        public decimal CalculateStandardTotal()
-        {
-
-            var uniqueBooks = _customerBasket.Books.GroupBy(x => x.Name).Distinct().Count();
-
-            if (uniqueBooks <= 1)
-            {
-                return CalculateTotal(_customerBasket.Books.Count, 0.0m);
-            }
-            else
-            {
-                var discount = GetDiscountRate(uniqueBooks);
-
-                var total = CalculateTotal(uniqueBooks, discount);
-                return total;
-            }
         }
 
         public decimal GetDiscountRate(int totalBooks)
@@ -65,12 +43,12 @@ namespace PotterKataLibrary
             };
     }
 
-        public decimal CalculateGroupTotal()
+        public decimal Calculate()
         {
             CalculateDiscountGroups();
 
             var totalCost = 0.0m;
-            foreach (var discountList in _discountGroups)
+            foreach (var discountList in _uniqueBookGroup)
             {
             
                 var distinctBookList = discountList.Count;
@@ -102,7 +80,7 @@ namespace PotterKataLibrary
                 }
             }
 
-            _discountGroups = discountLists;
+            _uniqueBookGroup = discountLists;
         }
     }
 }

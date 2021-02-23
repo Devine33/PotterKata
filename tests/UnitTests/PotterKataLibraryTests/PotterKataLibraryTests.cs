@@ -23,64 +23,14 @@ namespace PotterKataLibraryTests
             Assert.AreEqual(1, _basket.TotalNumberOfItems);
         }
 
-        [Test]
-        public void Checkout_CorrectlyCalculatesNoDiscount()
-        {
-            _checkout = new Checkout(TestHelper.BasketFullOfBooks_NoDiscount());
-            var total = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(40m, total);
-        }
 
         [Test]
-        public void Checkout_CorrectlyCalculatesFivePercentDiscount()
+        public void Checkout_CorrectlyWithNoBooks()
         {
-            _checkout = new Checkout(TestHelper.BasketFullOFBooks_FivePercentDiscount());
-            var total = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(15.2m, total);
+            _checkout = new Checkout(new Basket());
+            var total = _checkout.CompletePurchase();
+            Assert.AreEqual(0, total);
         }
-
-        [Test]
-        public void Checkout_CorrectlyCalculatesTenPercentDiscount()
-        {
-            _checkout = new Checkout(TestHelper.BasketFullOFBooks_TenPercentDiscount());
-            var discount = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(21.6m, discount);
-        }
-
-        [Test]
-        public void Checkout_CorrectlyCalculatesFifteenPercentDiscount()
-        {
-            _checkout = new Checkout(TestHelper.BasketFullOFBooks_FifteenPercentDiscount());
-            var total = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(27.2, total);
-        }
-
-        [Test]
-        public void Checkout_CorrectlyCalculatesTwentyFivePercentDiscount()
-        {
-            _checkout = new Checkout(TestHelper.BasketFullOFBooks_TwentyFivePercentDiscount());
-            var total = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(30.0m, total);
-        }
-
-        [Test]
-        public void Checkout_CorrectlyCalculatesThirtyPercentDiscount()
-        {
-            _checkout = new Checkout(TestHelper.BasketFullOFBooks_ThirtyPercentDiscount());
-            var discount = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(33.6m, discount);
-        }
-
-        [Test]
-        public void Checkout_CorrectlyCalculatesThirtyFivePercentDiscount()
-        {
-            _checkout = new Checkout(TestHelper.BasketFullOFBooks_ThirtyFivePercentDiscount());
-            var discount = _checkout.CalculateStandardTotal();
-            Assert.AreEqual(36.4m, discount);
-        }
-
-
-        //TOTAL COST TESTS
 
         [Test]
         public void Checkout_CorrectlyCalculatesTotalCostWithNoDiscount()
