@@ -22,49 +22,48 @@ namespace PotterKataLibrary
            return  groupDiscount > standardDiscount ? groupDiscount : standardDiscount;
         }
 
-        public decimal CalculateTotal()
+        public decimal CalculateTotal(int totalBooks,decimal discount)
         {
-            var total = _customerBasket.TotalNumberOfItems * 8.00m;
-            return total;
+            var total = totalBooks * 8.00m;
+            var totalDiscount = total * discount;
+            var finalPurchaseCost = total - totalDiscount;
+            return finalPurchaseCost;
         }
 
         //Basic discount is based on total number of unique books purchased
         public decimal CalculateStandardTotal()
         {
-            var discount = 0.0m;
+
             var uniqueBooks = _customerBasket.Books.GroupBy(x => x.Name).Distinct().Count();
-            switch (uniqueBooks)
+
+            if (uniqueBooks <= 1)
             {
-                case 0:
-                    discount =  0.0m;
-                    break;
-                case 1:
-                    discount =  0.0m;
-                    break;
-                case 2:
-                    discount =  0.05m;
-                    break;
-                case 3:
-                    discount =  0.10m;
-                    break;
-                case 4:
-                    discount = 0.15m;
-                    break;
-                case 5:
-                    discount = 0.25m;
-                    break;
-                case 6:
-                    discount = 0.30m;
-                    break;
-                case 7:
-                    discount = 0.35m;
-                    break;
+                return CalculateTotal(_customerBasket.Books.Count, 0.0m);
             }
-            var total = CalculateTotal();
-            var totalDiscount = total * discount;
-            var finalPurchaseCost = total - totalDiscount;
-            return finalPurchaseCost;
+            else
+            {
+                var discount = GetDiscountRate(uniqueBooks);
+
+                var total = CalculateTotal(uniqueBooks, discount);
+                return total;
+            }
         }
+
+        public decimal GetDiscountRate(int totalBooks)
+        {
+            return totalBooks switch
+            {
+                0 => 0.0m,
+                1 => 0.0m,
+                2 => 0.05m,
+                3 => 0.10m,
+                4 => 0.15m,
+                5 => 0.25m,
+                6 => 0.30m,
+                7 => 0.35m,
+                _ => 0.0m
+            };
+    }
 
         public decimal CalculateGroupTotal()
         {
@@ -73,40 +72,12 @@ namespace PotterKataLibrary
             var totalCost = 0.0m;
             foreach (var discountList in _discountGroups)
             {
-                var total = discountList.Count * 8.00m;
-                var discount = 0.0m;
-                var disList = discountList.Count;
-                switch (disList) //todo: Abstract to classes or own function
-                {
-                    case 0:
-                        discount += 0.0m;
-                        break;
-                    case 1:
-                        discount += 0.0m;
-                        break;
-                    case 2:
-                        discount += 0.05m;
-                        break;
-                    case 3:
-                        discount += 0.10m;
-                        break;
-                    case 4:
-                        discount += 0.15m;
-                        break;
-                    case 5:
-                        discount += 0.25m;
-                        break;
-                    case 6:
-                        discount += 0.30m;
-                        break;
-                    case 7:
-                        discount += 0.35m;
-                        break;
-                }
+            
+                var distinctBookList = discountList.Count;
 
-                var totalDiscount = total * discount;
-                var finalPurchaseCost = total - totalDiscount;
-                totalCost += finalPurchaseCost;
+                var discount = GetDiscountRate(distinctBookList);
+
+                totalCost += CalculateTotal(distinctBookList, discount);
             }
           
 
